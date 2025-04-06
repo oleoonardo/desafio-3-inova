@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --text-offwhite: #57534E;
+    --color-campoCinza:#D6D3D1;
+    --border-bordaTrilha:#F3541C;
+  }
+}
+.campo{
+  @apply border border-gray-400 rounded-lg p-2 w-full;
+}
+
+.campo__erro{
+  @apply text-red-500 text-sm;
+}
+
+*{
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(
+    110deg,
+    #3E3480,  /* Roxo-azulado (igual à borda) */
+    #0075ff,  /* Azul vibrante */
+    #1a1a4f,  /* Azul escuro (mais intenso que #282467) */
+    #3E3480   /* Volta ao início */
+  );
+  background-size: 400% 100%;  /* Mais espaço para suavizar */
+  animation: gradientFlow 15s linear infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+p, label{
+  color: var(--text-offwhite);
+}
+
+/* Estilo para o círculo vazio */
+.checkmark {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 2px solid gray;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Quando o input estiver selecionado, preenche o círculo */
+input:checked ~ .checkmark {
+  background: var(--border-bordaTrilha);
+  border-color: var(--border-bordaTrilha);
+}
+
+/* Adiciona o check dentro do círculo */
+input:checked ~ .checkmark::after {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.loading-border {
+  position: relative;
+  padding: 2px; /* Espessura da borda */
+  border-radius: 8px;
+  background: linear-gradient(
+    110deg,
+    #3E3480, 
+    #0075ff,
+    #282467,
+    #3E3480 
+  );
+  background-size: 300% 100%; 
+  animation: loading 7s linear infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
